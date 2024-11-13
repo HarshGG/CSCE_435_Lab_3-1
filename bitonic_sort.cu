@@ -22,9 +22,9 @@ const char* bitonic_sort_step_region = "bitonic_sort_step";
 const char* cudaMemcpy_host_to_device = "cudaMemcpy_host_to_device";
 const char* cudaMemcpy_device_to_host = "cudaMemcpy_device_to_host";
 
-float cudaMemcpy_host_to_device_time = 0.0f;
-float cudaMemcpy_device_to_host_time = 0.0f;
-float bitonic_sort_step_time = 0.0f;
+// float cudaMemcpy_host_to_device_time = 0.0f;
+// float cudaMemcpy_device_to_host_time = 0.0f;
+// float bitonic_sort_step_time = 0.0f;
 
 void print_elapsed(clock_t start, clock_t stop)
 {
@@ -127,8 +127,8 @@ void bitonic_sort(float *values)
   cudaEventSynchronize(stopEvent);
   cudaEventElapsedTime(&bitonic_sort_step_time, startEvent, stopEvent);
 
-  float effective_bandwith_kernel = ((2.0f * NUM_VALS * sizeof(float)) / (1 << 30)) / (bitonic_sort_step_time / 1000.0);
-  printf("Effective Bandwidth: %.3f GB/s\n", effective_bandwith_kernel);
+  effective_bandwidth_gb_s = ((2.0f * NUM_VALS * sizeof(float)) / (1 << 30)) / (bitonic_sort_step_time / 1000.0);
+  printf("Effective Bandwidth: %.3f GB/s\n", effective_bandwidth_gb_s);
 
   //MEM COPY FROM DEVICE TO HOST
   CALI_MARK_BEGIN(cudaMemcpy_device_to_host);

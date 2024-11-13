@@ -92,7 +92,7 @@ void bitonic_sort(float *values)
   float *dev_values;
   size_t size = NUM_VALS * sizeof(float);
 
-  cudaEvent_t startEvent
+  cudaEvent_t startEvent;
   cudaEventCreate(&startEvent);
   cudaEvent_t stopEvent;
   cudaEventCreate(&stopEvent);

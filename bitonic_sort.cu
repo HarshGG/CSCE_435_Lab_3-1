@@ -22,9 +22,11 @@ const char* bitonic_sort_step_region = "bitonic_sort_step";
 const char* cudaMemcpy_host_to_device = "cudaMemcpy_host_to_device";
 const char* cudaMemcpy_device_to_host = "cudaMemcpy_device_to_host";
 
-// float cudaMemcpy_host_to_device_time = 0.0f;
-// float cudaMemcpy_device_to_host_time = 0.0f;
-// float bitonic_sort_step_time = 0.0f;
+float effective_bandwidth_gb_s;
+float bitonic_sort_step_time;
+float cudaMemcpy_host_to_device_time;
+float cudaMemcpy_device_to_host_time;
+int kernel_iterations;
 
 void print_elapsed(clock_t start, clock_t stop)
 {
@@ -171,11 +173,11 @@ int main(int argc, char *argv[])
   print_elapsed(start, stop);
 
   // Store results in these variables.
-  float effective_bandwidth_gb_s;
-  float bitonic_sort_step_time;
-  float cudaMemcpy_host_to_device_time;
-  float cudaMemcpy_device_to_host_time;
-  int kernel_iterations;
+  // float effective_bandwidth_gb_s;
+  // float bitonic_sort_step_time;
+  // float cudaMemcpy_host_to_device_time;
+  // float cudaMemcpy_device_to_host_time;
+  // int kernel_iterations;
 
   adiak::init(NULL);
   adiak::user();
